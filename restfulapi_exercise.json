@@ -1,0 +1,318 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "todolist RESTful API",
+    "description": "spesifikasi API untuk todolist RESTful API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "hafiz nur",
+      "email": "hafiznur@example.com",
+      "url": "https://github.com/hafiztheexplorer"
+    },
+    "license": {
+      "name": "",
+      "url": "https"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{environment}:{portlocalhost}/api",
+      "description": "kita gunakan localhost, for the sake of my sanity please",
+      "variables": {
+        "environment": {
+          "default": "localhost",
+          "description": "description"
+        },
+        "portlocalhost": {
+          "default": "3000",
+          "description": "ummmm, pilih sesuai selera, saya sih 3000"
+        }
+      }
+    }
+  ],
+  "externalDocs": {
+    "description": "",
+    "url": "https"
+  },
+  "paths": {
+    "/daftartodolist": {
+      "get": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "ambil data semua todolistittle, todolistcontent, todolistsubcontent dari DB",
+        "responses": {
+          "200": {
+            "description": "response sukses saat ambil data dari DB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getR200appjsonschema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "masukin data ke DB",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postRBappjsonschema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "response sukses saat masukin data ke DB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postR200appjsonschema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/daftartodolist/{idlist}": {
+      "post": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "masukin data todolist ke DB",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postRBappjsonschema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "response sukses saat masukin data ke DB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postR200appjsonschema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "ambil data todolist di database by Id",
+        "description": "ambil data todolist di database by Id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/create-update-todolisttitle"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sukses mendapatkan Id todolist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postR200appjsonschema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "update data todolist existing di DB by id",
+        "description": "update data todolist existing di DB by id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/create-update-todolisttitle"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postRBappjsonschema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "sukses mendapatkan Id todolist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postR200appjsonschema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "hapus data todolist dari DB",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/create-update-todolisttitle"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response sukses saat menghapus data todolist dari DB by Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "create-update-todolisttitle": {
+        "name": "idtodolist",
+        "in": "path",
+        "description": "Id todolist",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "default": "idtodolist",
+          "nullable": false
+        }
+      }
+    },
+    "schemas": {
+      "getR200appjsonschema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "$ref": "#/components/schemas/data-id-todolisttable"
+          }
+        }
+      },
+      "postRBappjsonschema": {
+        "type": "object",
+        "properties": {
+          "namatodolist": {
+            "type": "string"
+          },
+          "todolisttitle": {
+            "type": "string"
+          },
+          "todolistcontent": {
+            "type": "string"
+          },
+          "todolistsubcontent": {
+            "type": "string"
+          },
+          "checked": {
+            "type": "boolean"
+          }
+        }
+      },
+      "postR200appjsonschema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/data-id-todolisttable"
+          }
+        }
+      },
+      "data-id-todolisttable": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "datetime": {
+            "type": "string"
+          },
+          "todolisttitle": {
+            "type": "string"
+          },
+          "todolistcontent": {
+            "type": "string"
+          },
+          "todolistsubcontent": {
+            "type": "string"
+          },
+          "checked": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+        "categoryAuth":{
+            "description": "Authentication for category RESTful API",
+            "type": "apiKey",
+            "in": "header",
+            "name": "X-API-Key"
+          }
+    }
+  }
+}
