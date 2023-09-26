@@ -1,0 +1,5 @@
+1. tiap tabel kita representasikan dalam data struct, yang di dalam database "db_todolist"."todolist" itu ada di file model/domain/todolist.go
+2. lalu kita membuat Todolist Repository itu sebagai data access layernya ke domain si kategori
+3. bikin kontrak dulu dalam todolist_repository.go berupa interface, operation nya apa saja GET, POST. . . DELETE berada di sini, repository functionnya
+4. kita bikin sesuai operasinya, create, update, delete, findbyid, findall, parameter menggunakan context - golang context
+5. di go harus transaksional data yang dikirim atau didapatkan dari diDB, jadi ada db.begin dulu, jadi bisa w only, r only, atau keduanya(mungkin, im just bulshiting)

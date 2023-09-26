@@ -37,3 +37,15 @@ CREATE TABLE `todolist` (
 ) ENGINE=InnoDB;
 select * from todolist;
 desc todolist;
+
+insert into `todolist` (`todolisttitle`, `todolistcontent`, `checked`)
+values
+('belanjaan', 'tomat x4', true),
+('belanjaan', 'cabe 1Kg', true),
+('belanjaan', 'brokoli 1Bonggol', true),
+('belanjaan', 'tempe x4', false),
+('workout', 'pushup x5', true),
+('workout', 'running in place 2Min', true),
+('workout', 'barbel curl x10', true),
+('workout', 'situp x5', true),
+('workout', 'jumping jack 2Min', true);

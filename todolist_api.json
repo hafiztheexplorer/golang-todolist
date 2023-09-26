@@ -101,7 +101,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/postRBappjsonschema"
+                "$ref": "#/components/schemas/postcontentRBappjsonschema"
               }
             }
           }
@@ -251,20 +251,27 @@
       "postRBappjsonschema": {
         "type": "object",
         "properties": {
-          "namatodolist": {
-            "type": "string"
-          },
           "todolisttitle": {
             "type": "string"
           },
           "todolistcontent": {
             "type": "string"
           },
-          "todolistsubcontent": {
+          "checked": {
+            "type": "boolean",
+            "default":"false"
+          }
+        }
+      },
+      "postcontentRBappjsonschema": {
+        "type": "object",
+        "properties": {
+          "todolistcontent": {
             "type": "string"
           },
           "checked": {
-            "type": "boolean"
+            "type": "boolean",
+            "default":"false"
           }
         }
       },
@@ -297,11 +304,9 @@
           "todolistcontent": {
             "type": "string"
           },
-          "todolistsubcontent": {
-            "type": "string"
-          },
           "checked": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": "false"
           }
         }
       }
