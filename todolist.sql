@@ -49,3 +49,8 @@ values
 ('workout', 'barbel curl x10', true),
 ('workout', 'situp x5', true),
 ('workout', 'jumping jack 2Min', true);
+
+alter table `todolist` add constraint column `todolistcontent` ;
+
+use sik;
+SET GLOBAL sql_mode = '';

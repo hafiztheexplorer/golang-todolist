@@ -88,7 +88,7 @@
         }
       }
     },
-    "/daftartodolist/{idlist}": {
+    "/daftartodolist/{titlelist}": {
       "post": {
         "security": [{
             "categoryAuth":[]
@@ -96,7 +96,7 @@
         "tags": [
           "API todolist"
         ],
-        "summary": "masukin data todolist ke DB",
+        "summary": "masukin data todolisttitle ke DB",
         "requestBody": {
           "content": {
             "application/json": {
@@ -108,7 +108,7 @@
         },
         "responses": {
           "200": {
-            "description": "response sukses saat masukin data ke DB",
+            "description": "response sukses saat masukin data todolisttitle ke DB",
             "content": {
               "application/json": {
                 "schema": {
@@ -126,8 +126,8 @@
         "tags": [
           "API todolist"
         ],
-        "summary": "ambil data todolist di database by Id",
-        "description": "ambil data todolist di database by Id",
+        "summary": "ambil data - data todolisttitle di database by todolisttile",
+        "description": "ambil data - data todolisttitle di database by todolisttile",
         "parameters": [
           {
             "$ref": "#/components/parameters/create-update-todolisttitle"
@@ -135,7 +135,7 @@
         ],
         "responses": {
           "200": {
-            "description": "sukses mendapatkan Id todolist",
+            "description": "sukses mendapatkan data - data todolisttitle",
             "content": {
               "application/json": {
                 "schema": {
@@ -153,8 +153,8 @@
         "tags": [
           "API todolist"
         ],
-        "summary": "update data todolist existing di DB by id",
-        "description": "update data todolist existing di DB by id",
+        "summary": "update data - data todolisttitle existing di DB by todolistittle",
+        "description": "update data - data todolisttitle existing di DB by todolisttitle",
         "parameters": [
           {
             "$ref": "#/components/parameters/create-update-todolisttitle"
@@ -171,7 +171,7 @@
         },
         "responses": {
           "200": {
-            "description": "sukses mendapatkan Id todolist",
+            "description": "sukses mendapatkan todolisttile",
             "content": {
               "application/json": {
                 "schema": {
@@ -189,7 +189,7 @@
         "tags": [
           "API todolist"
         ],
-        "summary": "hapus data todolist dari DB",
+        "summary": "hapus data - data todolisttitle dari DB by todolisttitle",
         "parameters": [
           {
             "$ref": "#/components/parameters/create-update-todolisttitle"
@@ -197,7 +197,136 @@
         ],
         "responses": {
           "200": {
-            "description": "response sukses saat menghapus data todolist dari DB by Id",
+            "description": "response sukses saat menghapus data - data todolisttitle dari DB by todolisttitle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/daftartodolist/{titlelist}/{idlist}": {
+      "post": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "memasukkan data todolistcontent ke DB by id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postcontentRBappjsonschema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "response sukses saat memasukkan data todolistcontent ke DB by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postR200appjsonschema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "ambil data todolistcontent di database by Id",
+        "description": "ambil data todolistcontent di database by Id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/create-update-todolisttitle"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sukses mendapatkan Id todolistcontent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postR200appjsonschema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "update data todolistcontent existing di DB by id",
+        "description": "update data todolistcontent existing di DB by id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/create-update-todolisttitle"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postRBappjsonschema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "sukses mendapatkan Id todolistcontent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postR200appjsonschema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{
+            "categoryAuth":[]
+        }],
+        "tags": [
+          "API todolist"
+        ],
+        "summary": "hapus data todolistcontent dari DB by id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/create-update-todolisttitle"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response sukses saat menghapus data todolistcontent dari DB by Id",
             "content": {
               "application/json": {
                 "schema": {
